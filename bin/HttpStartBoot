@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var logger =new require('../../public/utils/logger').init( __dirname +"/../configes/log4js.json");
+var logger =new require('../utils/logger').init( __dirname +"/../configes/log4js.json");
 process.logger = logger;
 var app = require('../app');
 var debug = require('debug')('untitled:server');

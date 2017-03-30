@@ -3,12 +3,12 @@
  */
 var http = require('http');
 var confige = require('./../configes/confige');
-var crypt = require('./../../public/utils/crypt');
+var crypt = require('./../utils/crypt');
 function Base(){
 
 
 };
-Base.request=function(method, path, data){
+Base.request=function(method, path, data, cb){
     var opt = {
         host:confige.host,
         port:confige.port,
@@ -34,6 +34,8 @@ Base.request=function(method, path, data){
         }).on('end', function(){
             console.log(res.headers);
             console.log('请求返回数据体:' + body);
+            typeof cb === 'function' && cb(JSON.parse(body))
+
         });
     }).on('error', function(e) {
         console.log("post error: " + e.message);
@@ -43,12 +45,12 @@ Base.request=function(method, path, data){
    // req.writeBody(enData);
     req.end();
 }
-Base.prototype.POST = function(path, data){
-    Base.request('POST', path, data);
+Base.prototype.POST = function(path, data, cb){
+    Base.request('POST', path, data, cb);
 }
 
 
-Base.prototype.GET = function(path, data){
+Base.prototype.GET = function(path, data, cb){
     Base.request('GET', path, data);
 }
 

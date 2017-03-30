@@ -28,8 +28,8 @@ exports.signUp = function(req, res, next) {
         return
     }
     rpc.userCall(function(remote){
-        remote.signUpWithNameAndPwd(req.body.account, req.body.password, function(e, v){
-            if (e){
+        remote.signUpWithNameAndPwd(req.body.account, req.body.password, function(v){
+            if (v == undefined){
                 http.sendData(res, eCode.UnkownError, '操作失败', null);
             }else{
                 http.sendData(res, eCode.Success, '操作成功', v);
