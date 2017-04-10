@@ -18,8 +18,8 @@ clean:
 	@rm -f coverage.html
 	@rm -rf ./coverage
 start:
-	@pm2 start ./bin/HttpStartBoot -i 1
+	@pm2 start ./bin/HttpStartBoot -i 1 --name httpService
 stop:
 	@pm2 stop ./bin/HttpStartBoot
 
-.PHONY: test test-cov lib-cov
+.PHONY: test test-cov lib-cov clean start stop

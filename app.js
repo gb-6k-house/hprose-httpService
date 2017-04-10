@@ -1,15 +1,15 @@
-var express = require('express');
-var path = require('path');
+var express = require('express')
+var path = require('path')
 // var favicon = require('serve-favicon');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
 
-var routes = require('./routes/routes');
+var routes = require('./routes/routes')
 
-var myParser = require('./middleware/mybodyParser');
-var app = express();
-process.app = app;
-var logger = process.logger;
+var myParser = require('./middleware/mybodyParser')
+var app = express()
+process.app = app
+var logger = process.logger
 
 
 // view engine setup
@@ -18,15 +18,16 @@ var logger = process.logger;
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 //添加中间件,解析加密数据
-app.use(myParser());
-app.use(cookieParser());
-app.use('/api-user', routes);
+app.use(myParser())
+// app.use(bodyParser.json())
+app.use(cookieParser())
+app.use('/api-user', routes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
 });
 
 // error handlers

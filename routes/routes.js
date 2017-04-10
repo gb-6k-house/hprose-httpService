@@ -7,6 +7,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.post('/signUp',user.signUp);
+router.post('/signIn',user.signIn);
 
 //express().use('/home/getNewMsg',home.getNewMsg);
 module.exports = router;

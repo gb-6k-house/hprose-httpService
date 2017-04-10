@@ -25,4 +25,13 @@ describe('user http', function () {
         })
     })
 
+    describe('/api-user/signIn', function () {
+        it('登录成功必须返回data字段', function (done) {
+            homeTest.POST('/api-user/signIn', {account:'liukai', password:"123456"}, function (body) {
+                body.should.have.property('data')
+                done()
+            });
+
+        })
+    })
 })

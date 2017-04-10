@@ -2,3 +2,10 @@ language: node_js
 node_js:
   - node
   - v6
+install:
+  - npm install pm2 -g
+  - npm install
+before_script:
+  - npm start
+after_script:
+  - npm stop
